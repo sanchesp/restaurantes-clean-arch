@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 public class UsuarioTipoEntityMapper {
 
     public UsuarioTipoEntity toEntity(UsuarioTipo tipo) {
-        return new UsuarioTipoEntity(null, tipo.getTipo());
+        return new UsuarioTipoEntity(tipo.getId(), tipo.getTipo());
     }
 
     public UsuarioTipo toDomain(UsuarioTipoEntity entity) {
-        return new UsuarioTipo(entity.getTipo());
+        return new br.com.fiap.techchalleger.restaurantescleanarch.core.domain.UsuarioTipo(entity.getId(), entity.getTipo());
     }
 }

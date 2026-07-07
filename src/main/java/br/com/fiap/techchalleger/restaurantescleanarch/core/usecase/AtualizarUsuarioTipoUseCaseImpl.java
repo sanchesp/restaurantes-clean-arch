@@ -1,22 +1,22 @@
 package br.com.fiap.techchalleger.restaurantescleanarch.core.usecase;
 
-import br.com.fiap.techchalleger.restaurantescleanarch.core.gateway.UsuarioTipoGateway;
 import br.com.fiap.techchalleger.restaurantescleanarch.core.domain.UsuarioTipo;
+import br.com.fiap.techchalleger.restaurantescleanarch.core.gateway.UsuarioTipoGateway;
 
-public class CriarUsuarioTipoUseCaseImpl implements CriarUsuarioTipoUseCase {
+public class AtualizarUsuarioTipoUseCaseImpl implements AtualizarUsuarioTipoUseCase {
 
     private final UsuarioTipoGateway usuarioTipoGateway;
 
-    public CriarUsuarioTipoUseCaseImpl(UsuarioTipoGateway usuarioTipoGateway) {
+    public AtualizarUsuarioTipoUseCaseImpl(UsuarioTipoGateway usuarioTipoGateway) {
         this.usuarioTipoGateway = usuarioTipoGateway;
     }
 
     @Override
-    public String criarUsuarioTipo(UsuarioTipo tipo) {
+    public UsuarioTipo atualizarUsuarioTipo(Long id, UsuarioTipo tipo) {
 
         usuarioTipoJaExiste(tipo);
 
-        return usuarioTipoGateway.criarUsuarioTipo(tipo);
+        return usuarioTipoGateway.atualizarUsuarioTipo(id, tipo);
     }
 
     private void usuarioTipoJaExiste(UsuarioTipo tipo) {
@@ -25,3 +25,4 @@ public class CriarUsuarioTipoUseCaseImpl implements CriarUsuarioTipoUseCase {
         }
     }
 }
+
