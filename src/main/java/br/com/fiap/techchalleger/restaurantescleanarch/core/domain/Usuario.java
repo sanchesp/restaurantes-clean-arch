@@ -9,6 +9,11 @@ public class Usuario {
     private Long usuarioTipoId;
 
     public Usuario(Long id, String nome, String email, String senha, Long usuarioTipoId) {
+
+        if (usuarioTipoId == null) {
+            throw new IllegalArgumentException("O ID do tipo de usuário não pode ser nulo.");
+        }
+
         this.id = id;
         this.nome = nome;
         this.email = email;
