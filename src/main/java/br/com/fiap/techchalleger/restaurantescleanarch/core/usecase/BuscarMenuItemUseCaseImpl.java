@@ -1,6 +1,7 @@
 package br.com.fiap.techchalleger.restaurantescleanarch.core.usecase;
 
 import br.com.fiap.techchalleger.restaurantescleanarch.core.domain.MenuItem;
+import br.com.fiap.techchalleger.restaurantescleanarch.core.exception.EntidadeNaoEncontradaException;
 import br.com.fiap.techchalleger.restaurantescleanarch.core.gateway.MenuItemGateway;
 
 public class BuscarMenuItemUseCaseImpl implements BuscarMenuItemUseCase {
@@ -15,7 +16,7 @@ public class BuscarMenuItemUseCaseImpl implements BuscarMenuItemUseCase {
     public MenuItem buscarPorId(Long id) {
         MenuItem menuItem = menuItemGateway.buscarPorId(id);
         if (menuItem == null) {
-            throw new IllegalArgumentException("Item do menu não encontrado com o ID: " + id);
+            throw new EntidadeNaoEncontradaException("Item do menu não encontrado com o ID: " + id);
         }
         return menuItem;
     }

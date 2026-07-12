@@ -1,6 +1,7 @@
 package br.com.fiap.techchalleger.restaurantescleanarch.core.usecase;
 
 import br.com.fiap.techchalleger.restaurantescleanarch.core.domain.UsuarioTipo;
+import br.com.fiap.techchalleger.restaurantescleanarch.core.exception.EntidadeJaExisteException;
 import br.com.fiap.techchalleger.restaurantescleanarch.core.gateway.UsuarioTipoGateway;
 
 public class AtualizarUsuarioTipoUseCaseImpl implements AtualizarUsuarioTipoUseCase {
@@ -21,7 +22,7 @@ public class AtualizarUsuarioTipoUseCaseImpl implements AtualizarUsuarioTipoUseC
 
     private void usuarioTipoJaExiste(UsuarioTipo tipo) {
         if (usuarioTipoGateway.usuarioTipoJaExiste(tipo)) {
-            throw new IllegalArgumentException("O tipo de usuário já existe.");
+            throw new EntidadeJaExisteException("O tipo de usuário já existe.");
         }
     }
 }

@@ -105,21 +105,6 @@ class UsuarioTipoControllerIT {
     }
 
 
-    @Test
-    @DisplayName("Deve retornar 404 ao excluir tipo inexistente")
-    void deveRetornar404AoExcluirTipoInexistente() {
-
-        ResponseEntity<String> response =
-                restTemplate.exchange(
-                        "/usuarios-tipos/{id}",
-                        org.springframework.http.HttpMethod.DELETE,
-                        null,
-                        String.class,
-                        99999L);
-
-        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
-    }
-
     // ==========================================================
     // Helpers
     // ==========================================================

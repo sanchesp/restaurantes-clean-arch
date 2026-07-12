@@ -2,6 +2,8 @@ package br.com.fiap.techchalleger.restaurantescleanarch.core.usecase;
 
 import br.com.fiap.techchalleger.restaurantescleanarch.core.domain.Restaurante;
 import br.com.fiap.techchalleger.restaurantescleanarch.core.domain.Usuario;
+import br.com.fiap.techchalleger.restaurantescleanarch.core.exception.EntidadeNaoEncontradaException;
+import br.com.fiap.techchalleger.restaurantescleanarch.core.exception.UsuarioNaoEDonoRestauranteException;
 import br.com.fiap.techchalleger.restaurantescleanarch.core.gateway.RestauranteGateway;
 import br.com.fiap.techchalleger.restaurantescleanarch.core.gateway.UsuarioGateway;
 import org.junit.jupiter.api.BeforeEach;
@@ -80,8 +82,8 @@ class CriarRestauranteUseCaseImplTest {
         when(usuarioGateway.buscarPorId(99L)).thenReturn(null);
 
         // Act & Assert
-        IllegalArgumentException exception = assertThrows(
-                IllegalArgumentException.class,
+        EntidadeNaoEncontradaException exception = assertThrows(
+                EntidadeNaoEncontradaException.class,
                 () -> useCase.criarRestaurante(restaurante)
         );
 
@@ -113,8 +115,8 @@ class CriarRestauranteUseCaseImplTest {
         when(usuarioGateway.buscarPorId(1L)).thenReturn(usuario);
 
         // Act & Assert
-        IllegalArgumentException exception = assertThrows(
-                IllegalArgumentException.class,
+         UsuarioNaoEDonoRestauranteException exception = assertThrows(
+                UsuarioNaoEDonoRestauranteException.class,
                 () -> useCase.criarRestaurante(restaurante)
         );
 

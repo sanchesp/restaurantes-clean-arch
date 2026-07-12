@@ -1,5 +1,6 @@
 package br.com.fiap.techchalleger.restaurantescleanarch.core.usecase;
 
+import br.com.fiap.techchalleger.restaurantescleanarch.core.exception.EntidadeNaoEncontradaException;
 import br.com.fiap.techchalleger.restaurantescleanarch.core.gateway.MenuItemGateway;
 
 public class DeletarMenuItemUseCaseImpl implements DeletarMenuItemUseCase {
@@ -19,7 +20,7 @@ public class DeletarMenuItemUseCaseImpl implements DeletarMenuItemUseCase {
     private void validarMenuItemExiste(Long id) {
         var menuItem = menuItemGateway.buscarPorId(id);
         if (menuItem == null) {
-            throw new IllegalArgumentException("Item do menu não encontrado com o ID: " + id);
+            throw new EntidadeNaoEncontradaException("Item do menu não encontrado com o ID: " + id);
         }
     }
 

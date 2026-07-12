@@ -2,6 +2,7 @@ package br.com.fiap.techchalleger.restaurantescleanarch.core.usecase;
 
 import br.com.fiap.techchalleger.restaurantescleanarch.core.domain.MenuItem;
 import br.com.fiap.techchalleger.restaurantescleanarch.core.domain.Restaurante;
+import br.com.fiap.techchalleger.restaurantescleanarch.core.exception.EntidadeNaoEncontradaException;
 import br.com.fiap.techchalleger.restaurantescleanarch.core.gateway.MenuItemGateway;
 import br.com.fiap.techchalleger.restaurantescleanarch.core.gateway.RestauranteGateway;
 import org.junit.jupiter.api.BeforeEach;
@@ -83,8 +84,8 @@ class CriarMenuItemUseCaseImplTest {
         when(restauranteGateway.buscarPorId(99L)).thenReturn(null);
 
         // Act & Assert
-        IllegalArgumentException exception = assertThrows(
-                IllegalArgumentException.class,
+        EntidadeNaoEncontradaException exception = assertThrows(
+                EntidadeNaoEncontradaException.class,
                 () -> useCase.criarMenuItem(menuItem)
         );
 

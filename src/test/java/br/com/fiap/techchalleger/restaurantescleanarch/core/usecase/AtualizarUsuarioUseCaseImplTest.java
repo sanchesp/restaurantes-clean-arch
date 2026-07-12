@@ -1,10 +1,13 @@
 package br.com.fiap.techchalleger.restaurantescleanarch.core.usecase;
 
 import br.com.fiap.techchalleger.restaurantescleanarch.core.domain.Usuario;
+import br.com.fiap.techchalleger.restaurantescleanarch.core.dto.AtualizarUsuarioTipoDto;
+import br.com.fiap.techchalleger.restaurantescleanarch.core.exception.EntidadeNaoEncontradaException;
 import br.com.fiap.techchalleger.restaurantescleanarch.core.gateway.UsuarioGateway;
+import br.com.fiap.techchalleger.restaurantescleanarch.core.mapper.UsuarioMapper;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -21,70 +24,103 @@ class AtualizarUsuarioUseCaseImplTest {
     @Mock
     private UsuarioGateway usuarioGateway;
 
+    @Mock
+    private UsuarioMapper usuarioMapper;
+
     @BeforeEach
     void setUp() {
-        useCase = new AtualizarUsuarioUseCaseImpl(usuarioGateway);
+        useCase = new AtualizarUsuarioUseCaseImpl(
+                usuarioGateway,
+                usuarioMapper);
     }
 
     @Test
     @DisplayName("Deve atualizar usuário com sucesso")
     void testAtualizarUsuarioComSucesso() {
-        // Arrange
+
         Long id = 1L;
-        Usuario usuario = new Usuario(
-                1L,
+
+        AtualizarUsuarioTipoDto dto =
+                new AtualizarUsuarioTipoDto(2L);
+
+        Usuario usuarioExistente = new Usuario(
+                id,
                 "João Silva",
                 "joao@email.com",
                 "senha123",
                 1L
         );
+
         Usuario usuarioAtualizado = new Usuario(
-                1L,
-                "João Silva Atualizado",
-                "joao.novo@email.com",
-                "novaSenha123",
-                1L
+                id,
+                "João Silva",
+                "joao@email.com",
+                "senha123",
+                2L
         );
 
-        when(usuarioGateway.buscarPorId(id)).thenReturn(usuario);
+        when(usuarioGateway.buscarPorId(id))
+                .thenReturn(usuarioExistente);
+
+        when(usuarioMapper.map(
+                usuarioExistente.getId(),
+                usuarioExistente.getNome(),
+                usuarioExistente.getEmail(),
+                usuarioExistente.getSenha(),
+                dto))
+                .thenReturn(usuarioAtualizado);
+
         when(usuarioGateway.atualizarUsuarioTipo(id, usuarioAtualizado))
                 .thenReturn(usuarioAtualizado);
 
-        // Act
-        Usuario resultado = useCase.atualizarUsuarioTipo(id, usuarioAtualizado);
+        Usuario resultado = useCase.atualizarUsuarioTipo(id, dto);
 
-        // Assert
         assertNotNull(resultado);
-        assertEquals("João Silva Atualizado", resultado.getNome());
-        assertEquals("joao.novo@email.com", resultado.getEmail());
-        verify(usuarioGateway, times(1)).buscarPorId(id);
-        verify(usuarioGateway, times(1)).atualizarUsuarioTipo(id, usuarioAtualizado);
+        assertEquals(2L, resultado.getUsuarioTipoId());
+
+        verify(usuarioGateway).buscarPorId(id);
+
+        verify(usuarioMapper).map(
+                usuarioExistente.getId(),
+                usuarioExistente.getNome(),
+                usuarioExistente.getEmail(),
+                usuarioExistente.getSenha(),
+                dto);
+
+        verify(usuarioGateway).atualizarUsuarioTipo(id, usuarioAtualizado);
     }
 
     @Test
     @DisplayName("Deve lançar exceção quando usuário não existe")
     void testAtualizarUsuarioNaoExistente() {
-        // Arrange
+
         Long id = 99L;
-        Usuario usuario = new Usuario(
-                1L,
-                "João Silva",
-                "joao@email.com",
-                "senha123",
-                1L
-        );
 
-        when(usuarioGateway.buscarPorId(id)).thenReturn(null);
+        AtualizarUsuarioTipoDto dto =
+                new AtualizarUsuarioTipoDto(2L);
 
-        // Act & Assert
-        IllegalArgumentException exception = assertThrows(
-                IllegalArgumentException.class,
-                () -> useCase.atualizarUsuarioTipo(id, usuario)
-        );
+        when(usuarioGateway.buscarPorId(id))
+                .thenReturn(null);
 
-        assertEquals("Usuário não encontrado com o ID: " + id, exception.getMessage());
-        verify(usuarioGateway, times(1)).buscarPorId(id);
-        verify(usuarioGateway, never()).atualizarUsuarioTipo(anyLong(), any(Usuario.class));
+        EntidadeNaoEncontradaException exception =
+                assertThrows(
+                        EntidadeNaoEncontradaException.class,
+                        () -> useCase.atualizarUsuarioTipo(id, dto));
+
+        assertEquals(
+                "Usuário não encontrado com o ID: " + id,
+                exception.getMessage());
+
+        verify(usuarioGateway).buscarPorId(id);
+
+        verify(usuarioMapper, never()).map(
+                anyLong(),
+                anyString(),
+                anyString(),
+                anyString(),
+                any(AtualizarUsuarioTipoDto.class));
+
+        verify(usuarioGateway, never())
+                .atualizarUsuarioTipo(anyLong(), any(Usuario.class));
     }
 }
-

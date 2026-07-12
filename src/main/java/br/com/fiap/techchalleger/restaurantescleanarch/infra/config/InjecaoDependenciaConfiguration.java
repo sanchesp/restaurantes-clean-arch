@@ -66,20 +66,20 @@ public class InjecaoDependenciaConfiguration {
     }
 
     @Bean
-    AtualizarUsuarioUseCase atualizarUsuarioUseCase(UsuarioGateway usuarioGateway) {
-        return new AtualizarUsuarioUseCaseImpl(usuarioGateway);
+    AtualizarUsuarioUseCase atualizarUsuarioUseCase(
+            UsuarioGateway usuarioGateway,
+            UsuarioMapper usuarioMapper) {
+
+        return new AtualizarUsuarioUseCaseImpl(
+                usuarioGateway,
+                usuarioMapper);
     }
 
     @Bean
     UsuarioController usuarioController(
-            AtualizarUsuarioUseCase atualizarUsuarioUseCase,
-            UsuarioMapper usuarioMapper,
-            UsuarioGateway usuarioGateway) {
+            AtualizarUsuarioUseCase atualizarUsuarioUseCase) {
 
-        return new UsuarioController(
-                atualizarUsuarioUseCase,
-                usuarioMapper,
-                usuarioGateway);
+        return new UsuarioController(atualizarUsuarioUseCase);
     }
 
     @Bean

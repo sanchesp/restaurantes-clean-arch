@@ -1,6 +1,7 @@
 package br.com.fiap.techchalleger.restaurantescleanarch.core.usecase;
 
 import br.com.fiap.techchalleger.restaurantescleanarch.core.domain.UsuarioTipo;
+import br.com.fiap.techchalleger.restaurantescleanarch.core.exception.EntidadeJaExisteException;
 import br.com.fiap.techchalleger.restaurantescleanarch.core.gateway.UsuarioTipoGateway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -54,8 +55,8 @@ class CriarUsuarioTipoUseCaseImplTest {
         when(usuarioTipoGateway.usuarioTipoJaExiste(tipo)).thenReturn(true);
 
         // Act & Assert
-        IllegalArgumentException exception = assertThrows(
-                IllegalArgumentException.class,
+        EntidadeJaExisteException exception = assertThrows(
+                EntidadeJaExisteException.class,
                 () -> useCase.criarUsuarioTipo(tipo)
         );
 

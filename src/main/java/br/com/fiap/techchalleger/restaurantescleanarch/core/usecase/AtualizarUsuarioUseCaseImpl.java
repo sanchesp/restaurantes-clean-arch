@@ -1,28 +1,39 @@
 package br.com.fiap.techchalleger.restaurantescleanarch.core.usecase;
 
 import br.com.fiap.techchalleger.restaurantescleanarch.core.domain.Usuario;
+import br.com.fiap.techchalleger.restaurantescleanarch.core.dto.AtualizarUsuarioTipoDto;
+import br.com.fiap.techchalleger.restaurantescleanarch.core.exception.EntidadeNaoEncontradaException;
 import br.com.fiap.techchalleger.restaurantescleanarch.core.gateway.UsuarioGateway;
+import br.com.fiap.techchalleger.restaurantescleanarch.core.mapper.UsuarioMapper;
 
 public class AtualizarUsuarioUseCaseImpl implements AtualizarUsuarioUseCase {
 
     private final UsuarioGateway usuarioGateway;
+    private final UsuarioMapper usuarioMapper;
 
-    public AtualizarUsuarioUseCaseImpl(UsuarioGateway usuarioGateway) {
+    public AtualizarUsuarioUseCaseImpl(UsuarioGateway usuarioGateway,
+                                       UsuarioMapper usuarioMapper) {
         this.usuarioGateway = usuarioGateway;
+        this.usuarioMapper = usuarioMapper;
     }
 
     @Override
-    public Usuario atualizarUsuarioTipo(Long id, Usuario usuario) {
-        validarUsuarioExiste(id);
-        return usuarioGateway.atualizarUsuarioTipo(id, usuario);
-    }
+    public Usuario atualizarUsuarioTipo(Long id, AtualizarUsuarioTipoDto dto) {
 
-    private void validarUsuarioExiste(Long id) {
-        Usuario usuario = usuarioGateway.buscarPorId(id);
-        if (usuario == null) {
-            throw new IllegalArgumentException("Usuário não encontrado com o ID: " + id);
+        Usuario usuarioExistente = usuarioGateway.buscarPorId(id);
+
+        if (usuarioExistente == null) {
+            throw new EntidadeNaoEncontradaException(
+                    "Usuário não encontrado com o ID: " + id);
         }
+
+        Usuario usuarioAtualizado = usuarioMapper.map(
+                usuarioExistente.getId(),
+                usuarioExistente.getNome(),
+                usuarioExistente.getEmail(),
+                usuarioExistente.getSenha(),
+                dto);
+
+        return usuarioGateway.atualizarUsuarioTipo(id, usuarioAtualizado);
     }
-
 }
-

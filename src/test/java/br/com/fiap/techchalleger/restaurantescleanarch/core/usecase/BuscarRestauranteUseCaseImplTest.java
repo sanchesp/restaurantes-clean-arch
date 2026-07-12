@@ -1,6 +1,7 @@
 package br.com.fiap.techchalleger.restaurantescleanarch.core.usecase;
 
 import br.com.fiap.techchalleger.restaurantescleanarch.core.domain.Restaurante;
+import br.com.fiap.techchalleger.restaurantescleanarch.core.exception.EntidadeNaoEncontradaException;
 import br.com.fiap.techchalleger.restaurantescleanarch.core.gateway.RestauranteGateway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -60,8 +61,8 @@ class BuscarRestauranteUseCaseImplTest {
         when(restauranteGateway.buscarPorId(id)).thenReturn(null);
 
         // Act & Assert
-        IllegalArgumentException exception = assertThrows(
-                IllegalArgumentException.class,
+        EntidadeNaoEncontradaException exception = assertThrows(
+                EntidadeNaoEncontradaException.class,
                 () -> useCase.buscarPorId(id)
         );
 
