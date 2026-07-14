@@ -8,442 +8,10 @@
   },
   "item": [
     {
-      "name": "menu-items",
-      "item": [
-        {
-          "name": "Cadastra Item no Menu",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"nome\": \"Feijoada Completa\",\r\n    \"descricao\": \"Feijoada tradicional com acompanhamentos\",\r\n    \"preco\": 45.50,\r\n    \"disponivel\": true,\r\n    \"caminhoFoto\": \"/fotos/feijoada.jpg\",\r\n    \"restauranteId\": 1\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}/menu-items",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "menu-items"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Lista todos Itens do Menu",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/menu-items",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "menu-items"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Lista todos os itens do Menu por Restaurante",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/menu-items/restaurante/1",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "menu-items",
-                "restaurante",
-                "1"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Lista Item do Menu por ID",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/menu-items/1",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "menu-items",
-                "1"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Atualiza Item do Menu",
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"nome\": \"Pizza Margherita Premium\",\r\n    \"descricao\": \"Pizza margherita com ingredientes premium\",\r\n    \"preco\": 48.00,\r\n    \"disponivel\": true,\r\n    \"caminhoFoto\": \"/fotos/pizza_margherita_premium.jpg\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}/menu-items/{id}",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "menu-items",
-                "{id}"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Deleta Item do Menu",
-          "request": {
-            "method": "DELETE",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/menu-items/1",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "menu-items",
-                "1"
-              ]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "restaurantes",
-      "item": [
-        {
-          "name": "Cadastra Restaurante",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"nome\": \"Pizzaria Nova\",\r\n    \"endereco\": \"Rua Principal, 789\",\r\n    \"tipoCozinha\": \"Italiana\",\r\n    \"horarioFuncionamento\": \"10:00-23:00\",\r\n    \"donoId\": 2\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}/restaurantes",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "restaurantes"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Lista todos Restaurantes",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/restaurantes",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "restaurantes"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Lista Restaurante por ID",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/restaurantes/1",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "restaurantes",
-                "1"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Atualiza Restaurante",
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"nome\": \"Pizzaria do Pedro - Atualizado\",\r\n    \"endereco\": \"Rua A, 123 - Apto 200\",\r\n    \"tipoCozinha\": \"Italiana Gourmet\",\r\n    \"horarioFuncionamento\": \"11:00-22:00\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}/restaurantes/1",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "restaurantes",
-                "1"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Exclui Restaurante",
-          "request": {
-            "method": "DELETE",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/restaurantes/1",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "restaurantes",
-                "1"
-              ]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "usuarios",
-      "item": [
-        {
-          "name": "Cadastra Usuário",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"nome\": \"João Silva\",\r\n    \"email\": \"joao@email.com\",\r\n    \"senha\": \"senha123\",\r\n    \"usuarioTipoId\": 1\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}/usuarios",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "usuarios"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Lista todos Usuários",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/usuarios",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "usuarios"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Lista Usuário por ID",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/usuarios/1",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "usuarios",
-                "1"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Exclui Usuário",
-          "request": {
-            "method": "DELETE",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/usuarios/1",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "usuarios",
-                "1"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Atualiza Tipo do Usuário",
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"usuarioTipoId\": 2\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}/usuarios/1",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "usuarios",
-                "1"
-              ]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
       "name": "usuarios-tipos",
       "item": [
         {
-          "name": "Cadastra Tipo de Usuário",
+          "name": "Cadastra Tipo de Usuário (Cliente)",
           "request": {
             "method": "POST",
             "header": [
@@ -452,15 +20,6 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"tipo\": \"CLIENTE\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
             "url": {
               "raw": "{{base_url}}/usuarios-tipos",
               "host": [
@@ -469,9 +28,83 @@
               "path": [
                 "usuarios-tipos"
               ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"tipo\": \"CLIENTE\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
             }
           },
-          "response": []
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response body is not empty\", function () {",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Cadastra Tipo de Usuário (Dono Restaurante)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/usuarios-tipos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "usuarios-tipos"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"tipo\": \"DONO_RESTAURANTE\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response body is not empty\", function () {",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
         },
         {
           "name": "Lista Tipo de Usuário",
@@ -493,7 +126,35 @@
               ]
             }
           },
-          "response": []
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response is an array\", function () {",
+                  "    pm.expect(pm.response.json()).to.be.an('array');",
+                  "});",
+                  "",
+                  "const tipos = pm.response.json();",
+                  "const cliente = tipos.find(t => t.tipo === \"CLIENTE\");",
+                  "const dono = tipos.find(t => t.tipo === \"DONO_RESTAURANTE\");",
+                  "",
+                  "if (cliente) {",
+                  "    pm.collectionVariables.set(\"tipo_cliente_id\", cliente.id);",
+                  "}",
+                  "if (dono) {",
+                  "    pm.collectionVariables.set(\"tipo_dono_id\", dono.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
         },
         {
           "name": "Lista Tipo de Usuário por ID",
@@ -506,17 +167,34 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/usuarios-tipos/1",
+              "raw": "{{base_url}}/usuarios-tipos/{{tipo_cliente_id}}",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "usuarios-tipos",
-                "1"
+                "{{tipo_cliente_id}}"
               ]
             }
           },
-          "response": []
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response has id property\", function () {",
+                  "    pm.expect(pm.response.json()).to.have.property('id');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
         },
         {
           "name": "Atualiza Tipo de Usuário",
@@ -528,30 +206,651 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"tipo\": \"DONO_RESTAURANTE\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
             "url": {
-              "raw": "{{base_url}}/usuarios-tipos/1",
+              "raw": "{{base_url}}/usuarios-tipos/{{tipo_cliente_id}}",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "usuarios-tipos",
-                "1"
+                "{{tipo_cliente_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"tipo\": \"CLIENTE_ATUALIZADO\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response has id property\", function () {",
+                  "    pm.expect(pm.response.json()).to.have.property('id');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "usuarios",
+      "item": [
+        {
+          "name": "Cadastra Usuário",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/usuarios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "usuarios"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nome\": \"João Silva\",\r\n    \"email\": \"joao@email.com\",\r\n    \"senha\": \"senha123\",\r\n    \"usuarioTipoId\": {{tipo_dono_id}}\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response body is not empty\", function () {",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;",
+                  "});",
+                  "",
+                  "const match = pm.response.text().match(/ID:\\s*(\\d+)/);",
+                  "if (match) {",
+                  "    pm.collectionVariables.set(\"usuario_id\", match[1]);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Lista todos Usuários",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/usuarios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "usuarios"
               ]
             }
           },
-          "response": []
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response is an array\", function () {",
+                  "    pm.expect(pm.response.json()).to.be.an('array');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
         },
         {
-          "name": "Exclui Tipo de Usuário",
+          "name": "Lista Usuário por ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/usuarios/{{usuario_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "usuarios",
+                "{{usuario_id}}"
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response has id property\", function () {",
+                  "    pm.expect(pm.response.json()).to.have.property('id');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Atualiza Tipo do Usuário",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/usuarios/{{usuario_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "usuarios",
+                "{{usuario_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"usuarioTipoId\": {{tipo_dono_id}}\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response has id property\", function () {",
+                  "    pm.expect(pm.response.json()).to.have.property('id');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "restaurantes",
+      "item": [
+        {
+          "name": "Cadastra Restaurante",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/restaurantes",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "restaurantes"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nome\": \"Pizzaria Nova\",\r\n    \"endereco\": \"Rua Principal, 789\",\r\n    \"tipoCozinha\": \"Italiana\",\r\n    \"horarioFuncionamento\": \"10:00-23:00\",\r\n    \"donoId\": {{usuario_id}}\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response body is not empty\", function () {",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;",
+                  "});",
+                  "",
+                  "const match = pm.response.text().match(/ID:\\s*(\\d+)/);",
+                  "if (match) {",
+                  "    pm.collectionVariables.set(\"restaurante_id\", match[1]);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Lista todos Restaurantes",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/restaurantes",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "restaurantes"
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response is an array\", function () {",
+                  "    pm.expect(pm.response.json()).to.be.an('array');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Lista Restaurante por ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/restaurantes/{{restaurante_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "restaurantes",
+                "{{restaurante_id}}"
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response has id property\", function () {",
+                  "    pm.expect(pm.response.json()).to.have.property('id');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Atualiza Restaurante",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/restaurantes/{{restaurante_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "restaurantes",
+                "{{restaurante_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nome\": \"Pizzaria do Pedro - Atualizado\",\r\n    \"endereco\": \"Rua A, 123 - Apto 200\",\r\n    \"tipoCozinha\": \"Italiana Gourmet\",\r\n    \"horarioFuncionamento\": \"11:00-22:00\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response has id property\", function () {",
+                  "    pm.expect(pm.response.json()).to.have.property('id');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "menu-items",
+      "item": [
+        {
+          "name": "Cadastra Item no Menu",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/menu-items",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "menu-items"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nome\": \"Feijoada Completa\",\r\n    \"descricao\": \"Feijoada tradicional com acompanhamentos\",\r\n    \"preco\": 45.50,\r\n    \"disponivel\": true,\r\n    \"caminhoFoto\": \"/fotos/feijoada.jpg\",\r\n    \"restauranteId\": {{restaurante_id}}\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response body is not empty\", function () {",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;",
+                  "});",
+                  "",
+                  "const match = pm.response.text().match(/ID:\\s*(\\d+)/);",
+                  "if (match) {",
+                  "    pm.collectionVariables.set(\"menu_item_id\", match[1]);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Lista todos Itens do Menu",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/menu-items",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "menu-items"
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response is an array\", function () {",
+                  "    pm.expect(pm.response.json()).to.be.an('array');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Lista todos os itens do Menu por Restaurante",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/menu-items/restaurante/{{restaurante_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "menu-items",
+                "restaurante",
+                "{{restaurante_id}}"
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response is an array\", function () {",
+                  "    pm.expect(pm.response.json()).to.be.an('array');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Lista Item do Menu por ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/menu-items/{{menu_item_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "menu-items",
+                "{{menu_item_id}}"
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response has id property\", function () {",
+                  "    pm.expect(pm.response.json()).to.have.property('id');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Atualiza Item do Menu",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/menu-items/{{menu_item_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "menu-items",
+                "{{menu_item_id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nome\": \"Pizza Margherita Premium\",\r\n    \"descricao\": \"Pizza margherita com ingredientes premium\",\r\n    \"preco\": 48.00,\r\n    \"disponivel\": true,\r\n    \"caminhoFoto\": \"/fotos/pizza_margherita_premium.jpg\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response has id property\", function () {",
+                  "    pm.expect(pm.response.json()).to.have.property('id');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "cleanup",
+      "item": [
+        {
+          "name": "Deleta Item do Menu",
           "request": {
             "method": "DELETE",
             "header": [
@@ -561,17 +860,174 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/usuarios-tipos/{id}",
+              "raw": "{{base_url}}/menu-items/{{menu_item_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "menu-items",
+                "{{menu_item_id}}"
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Exclui Restaurante",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/restaurantes/{{restaurante_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "restaurantes",
+                "{{restaurante_id}}"
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Exclui Usuário",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/usuarios/{{usuario_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "usuarios",
+                "{{usuario_id}}"
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Exclui Tipo de Usuário (Cliente)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/usuarios-tipos/{{tipo_cliente_id}}",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "usuarios-tipos",
-                "{id}"
+                "{{tipo_cliente_id}}"
               ]
             }
           },
-          "response": []
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Exclui Tipo de Usuário (Dono Restaurante)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/usuarios-tipos/{{tipo_dono_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "usuarios-tipos",
+                "{{tipo_dono_id}}"
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
         }
       ]
     }
@@ -580,6 +1036,26 @@
     {
       "key": "base_url",
       "value": "http://localhost:8080"
+    },
+    {
+      "key": "tipo_cliente_id",
+      "value": ""
+    },
+    {
+      "key": "tipo_dono_id",
+      "value": ""
+    },
+    {
+      "key": "usuario_id",
+      "value": ""
+    },
+    {
+      "key": "restaurante_id",
+      "value": ""
+    },
+    {
+      "key": "menu_item_id",
+      "value": ""
     }
   ]
 }
