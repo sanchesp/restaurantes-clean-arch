@@ -28,8 +28,8 @@ src/main/java/br/com/fiap/techchalleger/restaurantescleanarch/
 │   ├── dto/                         # Entrada dos casos de uso
 │   └── exception/                   # Exceções de domínio/negócio
 └── infra/                           # Detalhes de implementação (adapters)
-    ├── web/                         # Controllers REST (*ApiController), JSON (request/response),
-    │                                 GlobalExceptionHandler
+    ├── web/                         # Controllers REST (*ApiController), JSON (request/response)
+    │   └── exception/                # GlobalExceptionHandler (@RestControllerAdvice)
     ├── database/
     │   ├── jpa/                     # Gateways JPA (implementam as portas do core)
     │   ├── jpa/entity/               # Entidades JPA
@@ -171,4 +171,6 @@ docker compose up -d postgres
 
 ## Collection Postman
 
-Importe `Restaurantes Clean Arch.postman_collection.json` no Postman (ou similar). A variável `base_url` já aponta para `http://localhost:8080`. A collection cobre o CRUD completo dos quatro recursos: tipos de usuário, usuários, restaurantes e itens de cardápio.
+Importe `Restaurantes Clean Arch.postman_collection.json` no Postman (ou similar). A variável `base_url` já aponta para `http://localhost:8080`. A collection cobre o CRUD completo dos quatro recursos: tipos de usuário, usuários, restaurantes e itens de cardápio, com cada request contendo test scripts (`pm.test`) de verificação.
+
+As pastas seguem a ordem de dependência entre os recursos (`usuarios-tipos` → `usuarios` → `restaurantes` → `menu-items` → `cleanup`) e os IDs são encadeados automaticamente via variáveis de coleção — não é necessário editar IDs manualmente entre requests. Para rodar a collection inteira (ex. via Collection Runner ou `newman run`), suba o ambiente com banco limpo antes (`docker compose down -v && docker compose up -d --build`), já que a pasta `cleanup` remove os dados criados e o Postgres não reaproveita IDs de registros deletados.
